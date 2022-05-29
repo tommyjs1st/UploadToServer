@@ -184,12 +184,7 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             // [선택한 이미지에서 비트맵 생성]
-                            InputStream in = getContentResolver().openInputStream(photoUri);
-                            Bitmap img = BitmapFactory.decodeStream(in);
-                            in.close();
-
-                            // [이미지 뷰에 이미지 표시]
-                            imageView.setImageBitmap(img);
+                            readImageFile(imageView, String.valueOf(photoUri));
 
                             // [파일 저장 실시 후 > 다시 사진 불러오기 진행 > 서버로 등록 요청]
                             saveFile(getNowTime24(), imageView, String.valueOf(photoUri));
@@ -305,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG,"\n"+"[절대 파일 경로 : "+getPrefString(getApplication(), "saveImageScopeAbsolute")+"]");
 
                 //TODO [다시 사진 표시]
-                readFile(imageView, getPrefString(getApplication(), "saveImageScopeContent"));
+                readImageFile(imageView, getPrefString(getApplication(), "saveImageScopeContent"));
 
                 //TODO [서버에 사진 등록 요청 실시]
                 uploadFileName = fileName+".jpg";
@@ -332,9 +327,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //이미지 뷰에 이미지 표시
-    private void readFile(ImageView view, String contentUrl) {
-        Log.d(TAG,"\n"+"[A_ScopePicture > readFile() 메소드 : MediaStore 파일 불러오기 실시]");
-        Log.d(TAG,"\n"+"[콘텐츠 파일 경로 : "+String.valueOf(contentUrl)+"]");
+    private void readImageFile(ImageView view, String contentUrl) {
 
         if (checkMediaStore()) return;  // 저장공간 접근권한 체크
 
