@@ -9,7 +9,7 @@
 
     <Button android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Click to Upload File"
+        android:text="갤러리에서 가져온 사진 올리기"
         android:id="@+id/uploadButton" />
 
     <TextView
@@ -24,5 +24,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="서버에서 사진 가져오기"
+        android:id="@+id/downloadButton" />
+
+    <ImageView
+        android:id="@+id/imageViewDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="사진 전부 보여주기"
+        android:id="@+id/showImages" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/input_here_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
 
 </LinearLayout>
